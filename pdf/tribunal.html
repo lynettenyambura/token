@@ -1,0 +1,304 @@
+<html class="translated-ltr" lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Página inicial - Justiça Eleitoral</title>
+		<style type="text/css">
+			#painelHome, h2 {
+				font-family: "Open Sans","Open Sans",Roboto,Arial,sans-serif;
+				display:block;				
+				text-align:center;
+				color: #6b6b6b;
+				font-size: 2.5rem!important;
+				font-weight: 700;
+				line-height: 3rem;
+				color: #1b305a;
+			}
+			.painel-conteudo {
+				width: 100%;
+				height: auto;
+			}
+			#titulo[corpo]{
+				display:block;
+				margin-top:7%}
+		
+			#labelSistema[corpo]{
+				display:block;
+				margin-top:1px;
+				text-align:center;
+				color:#4671c8;
+				font-size:24px}
+			#outros[corpo]{				
+				display:block;				
+				text-align:center;
+				font-weight: 400;
+				font-family: 'Open Sans', sans-serif;
+				font-size: 1.125rem;
+				line-height: 1.625rem;
+				color: #6b6b6b;				
+				}
+			.envio {
+				cursor:inherit;
+				margin-top: 10px;
+				padding-left: 30px;
+				padding-right: 30px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				border-radius:5px;
+				background-color: #1b305a;
+				color: #ffffff;
+				font-weight: bold;
+				margin-left: auto;
+				margin-right: auto;
+				display: none;
+			}
+			.opc {
+				
+				float: left;				
+			}
+			#instancias[corpo]{
+				position:relative;
+				display:table;
+				height:10px;
+				margin:10px auto 0}
+				#instancias[corpo] a[corpo]{
+				display: block;
+				margin-top: -20px;
+				text-align: center;    
+				font-family: 'Open Sans', sans-serif;
+				font-size: 1.125rem;
+				line-height: 1.625rem;
+				color: #6b6b6b;
+				font-size: 18px;
+				font-weight: 700;
+				color: #1b305a;
+				float:left;
+				width:110px;
+				height:250px;
+				margin:5px;
+				padding:35px 65px 0;
+				text-align:center;
+				text-decoration:none;
+				background-color:#FFFFFF;
+				border:1px solid #CCCCCC;
+				border-radius:5px;
+				webkit-box-shadow:0 0 1em #BBBBBB;
+				box-shadow:0 0 1em #BBBBBB;
+				opacity:.87;
+				cursor:pointer}
+				
+			#instancias[corpo] a[corpo]:hover{
+				webkit-box-shadow:0 0 2em #BBBBBB;
+				box-shadow:0 0 2em #BBBBBB				
+				display: block;				
+				text-align: center;
+				font-weight: 700;
+				font-family: 'Open Sans', sans-serif;
+				font-size: 18px;
+				line-height: 1.625rem;
+				color: #6b6b6b;				
+				width
+				}
+			#instancias[corpo] a[corpo] span[corpo]{
+				font-size:30px;
+				margin-bottom:5px;
+				line-height:30px;
+				white-space: nowrap;
+				width: 130px;
+				}
+			#tre{
+					margin-top:5%;
+				    display: block;
+					width: 130px;
+					height: calc(1.5em + .75rem + 2px);
+					padding: .375rem .75rem;
+					/* font-size: 1rem; */
+					font-weight: 400;
+					white-space: nowrap;
+					line-height: 1.5;
+					color: #495057;
+					background-color: #fff;
+					background-clip: padding-box;
+					border: 1px solid #ced4da;
+					border-radius: .25rem;
+					transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+				}
+		</style>
+			
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+		<script>
+
+			$(document).ready(function () {
+
+				var coRegional = 0;
+
+				var getUrlParameter = function getUrlParameter(sParam) {
+					var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+						sURLVariables = sPageURL.split('&'),
+						sParameterName,
+						i;
+
+					for (i = 0; i < sURLVariables.length; i++) {
+						sParameterName = sURLVariables[i].split('=');
+
+						if (sParameterName[0] === sParam) {
+							return sParameterName[1] === undefined ? true : sParameterName[1];
+						}
+					}
+				};
+
+				var coRegional = getUrlParameter('uf');
+				
+				if ( coRegional !== undefined && coRegional !== '' && coRegional !== true) {					
+					$("#tre").val(coRegional);
+					$(".envio").css("display", "block");
+				} else {
+					$(".envio").css("display", "none");
+				}
+			});
+
+				function validaenvio() {
+					var tre = $('#tre').find('option:selected').text();
+					if (tre !== '') {
+						$(".envio").css("display", "block");
+					} else {
+						$(".envio").css("display", "none");
+						$(".envio").css("text-algin", "center");
+					}
+				}
+
+				function AbrirSecao(select) {
+					
+					var tre = $('#tre').find('option:selected').text();
+					
+					if ( tre !== '') {
+						
+						var value = 'https://jurisprudencia.' + $.trim(tre) + '.jus.br/';							
+						
+						window.open(value, 'newwindow')
+					} else {
+						$(".envio").css("display", "none");
+					}
+					
+				}
+		</script>
+
+	</head>
+	<body>
+		<pje-root>
+
+		<router-outlet _ngcontent-c0=""></router-outlet>
+		<pje-painel-home corpo="" >
+			<div corpo="" class="painel-conteudo" id="painelHome">
+					<h2>Pesquisa de Jurisprudência</h2>
+					<h3 corpo="" id="outros" tabindex="0">
+						<font style="vertical-align: inherit;">
+							<font style="vertical-align: inherit;">Escolha a inst&acirc;ncia:</font>
+						</font>
+					</h3>
+				<nav corpo="" id="instancias">
+					<!---->
+					<div class="opc">
+						<a corpo="" aria-label="Jurisprudência do TSE" mattooltip="Jurisprudência do TSE" href="https://jurisprudencia.tse.jus.br/" target="_blank">
+							<span corpo="">
+								
+									<font style="vertical-align: inherit;">
+										Tribunal<br/>
+										Superior<br/>
+										Eleitoral<br/>
+									</font>
+								
+							</span>
+							<br corpo="">
+							
+								<font style="vertical-align: inherit;"> Jurisprudência do TSE</font>
+							
+						</a>
+						</div>
+						<!---->
+					<!---->
+					<div class="opc">
+	    			<a corpo="" aria-label="Jurisprudência Segundo Grau" mattooltip="Jurisprudência 2&#176; Grau">
+	    				<span corpo="">
+	    					
+	    					<font style="vertical-align: inherit;">
+	    						Tribunal<br/>
+	    						Regional<br/>
+	    						Eleitoral<br/>
+	    					</font>
+	    					
+	    				</span>
+	    				<br corpo="">
+	    				
+	    					<!-- <font style="vertical-align: inherit;"> Jurisprudência 2&#176;Grau</font> -->
+	    				
+	    				<select id="tre" onChange="validaenvio()">
+
+							<option value=""></option>
+							<option value="ac"> TRE-AC </option>
+							<option value="al"> TRE-AL </option>
+							<option value="am"> TRE-AM </option>
+							<option value="ap"> TRE-AP </option>
+							<option value="ba"> TRE-BA </option>
+							<option value="ce"> TRE-CE </option>
+							<option value="df"> TRE-DF </option>
+							<option value="es"> TRE-ES </option>
+							<option value="go"> TRE-GO </option>
+							<option value="ma"> TRE-MA </option>
+							<option value="mg"> TRE-MG </option>
+							<option value="ms"> TRE-MS </option>
+							<option value="mt"> TRE-MT </option>
+							<option value="pa"> TRE-PA </option>
+							<option value="pb"> TRE-PB </option>
+							<option value="pe"> TRE-PE </option>
+							<option value="pi"> TRE-PI </option>
+							<option value="pr"> TRE-PR </option>
+							<option value="rj"> TRE-RJ </option>
+							<option value="rn"> TRE-RN </option>
+							<option value="ro"> TRE-RO </option>
+							<option value="rr"> TRE-RR </option>
+							<option value="rs"> TRE-RS </option>
+							<option value="sc"> TRE-SC </option>
+							<option value="se"> TRE-SE </option>
+							<option value="sp"> TRE-SP </option>
+							<option value="to"> TRE-TO </option>
+
+	    					<!-- <option value=""></option>
+	    					<option value="https://jurisprudencia.tre-ac.jus.br"> TRE-AC </option>
+							<option value="https://jurisprudencia.tre-al.jus.br"> TRE-AL </option>
+							<option value="https://jurisprudencia.tre-am.jus.br"> TRE-AM </option>
+							<option value="https://jurisprudencia.tre-ap.jus.br"> TRE-AP </option>
+							<option value="https://jurisprudencia.tre-ba.jus.br"> TRE-BA </option>
+							<option value="https://jurisprudencia.tre-ce.jus.br"> TRE-CE </option>
+							<option value="https://jurisprudencia.tre-df.jus.br"> TRE-DF </option>
+							<option value="https://jurisprudencia.tre-es.jus.br"> TRE-ES </option>
+							<option value="https://jurisprudencia.tre-go.jus.br"> TRE-GO </option>
+							<option value="https://jurisprudencia.tre-ma.jus.br"> TRE-MA </option>
+							<option value="https://jurisprudencia.tre-mg.jus.br"> TRE-MG </option>
+							<option value="https://jurisprudencia.tre-ms.jus.br"> TRE-MS </option>
+							<option value="https://jurisprudencia.tre-mt.jus.br"> TRE-MT </option>
+							<option value="https://jurisprudencia.tre-pa.jus.br"> TRE-PA </option>
+							<option value="https://jurisprudencia.tre-pb.jus.br"> TRE-PB </option>
+							<option value="https://jurisprudencia.tre-pe.jus.br"> TRE-PE </option>
+							<option value="https://jurisprudencia.tre-pi.jus.br"> TRE-PI </option>
+							<option value="https://jurisprudencia.tre-pr.jus.br"> TRE-PR </option>
+							<option value="https://jurisprudencia.tre-rj.jus.br"> TRE-RJ </option>
+							<option value="https://jurisprudencia.tre-rn.jus.br"> TRE-RN </option>
+							<option value="https://jurisprudencia.tre-ro.jus.br"> TRE-RO </option>
+							<option value="https://jurisprudencia.tre-rr.jus.br"> TRE-RR </option>
+							<option value="https://jurisprudencia.tre-rs.jus.br"> TRE-RS </option>
+							<option value="https://jurisprudencia.tre-sc.jus.br"> TRE-SC </option>
+							<option value="https://jurisprudencia.tre-se.jus.br"> TRE-SE </option>
+							<option value="https://jurisprudencia.tre-sp.jus.br"> TRE-SP </option>
+							<option value="https://jurisprudencia.tre-to.jus.br"> TRE-TO </option> -->
+						</select>
+							<input class="envio" type="button" value="Ir" onClick="AbrirSecao(this)">
+					</a>
+					</div>
+									</nav>
+			</div>
+		</pje-painel-home>
+		</pje-root>
+	</body>
+</html>
